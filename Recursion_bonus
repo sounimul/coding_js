@@ -1,0 +1,38 @@
+/*
+Recursion
+- reverse
+- isPalindrome
+- someRecursive
+- flatten
+*/
+
+//reverse
+function reverse(str){
+    if(str.length===0) return '';
+    return str.slice(-1) + reverse(str.slice(0,-1));
+}
+
+//isPalindrome
+function isPalindrome(string) {
+
+    const origin = string;
+    
+    function reverse(str){
+        if(str.length===0) return '';
+        return str.slice(-1) + reverse(str.slice(0,-1));
+    }
+    return origin === reverse(string) ? true : false;
+}
+
+//someRecursive
+function someRecursive(arr, callback){
+  if(arr.length===0) return false;
+  if(callback(arr[0])===true) return true;
+  return someRecursive(arr.slice(1), callback);
+}
+
+//flatten
+function flatten(arr){
+  if(arr.length===0) return [];
+  return `${arr[0]}`.replace(/\[|\]/g,'').split(',').map(item=>Number(item)).concat(flatten(arr.slice(1)));
+}
